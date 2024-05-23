@@ -31,13 +31,15 @@ public class SearchController {
     @PostMapping("results")
     public String displaySearchResults(Model model, @RequestParam String searchType, @RequestParam String searchTerm){
         ArrayList<Job> jobs;
-        if (searchTerm.equals("all") || searchTerm.isBlank()){
+        if (searchTerm.equalsIgnoreCase("all") || searchTerm.isBlank()){ // added ignores case
            jobs = JobData.findAll();
             model.addAttribute("title", "All Jobs");
         } else {
             jobs = JobData.findByColumnAndValue(searchType, searchTerm);
             model.addAttribute("title", "Jobs with " + columnChoices.get(searchType) + ": " + searchTerm);
+            model.addAttribute("checkedKey", searchType); // if added outside of this condition, entering an empty search term does not change the checked term but displays all
         }
+
         model.addAttribute("jobs", jobs);
         model.addAttribute("columns", columnChoices);
         return "search";
