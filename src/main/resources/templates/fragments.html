@@ -4,8 +4,8 @@
 <head th:fragment="head">
 
     <!-- Bootstrap stylesheets and script -->
-    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
-    <link th:href="@{/css/techjobs.css}" rel="stylesheet" />
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet"/>
+    <link th:href="@{/css/techjobs.css}" rel="stylesheet"/>
     <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
 
     <title th:text="'TechJobs' + ${title == null ? '' : ' :: ' + title}">TechJobs</title>
@@ -23,8 +23,6 @@
                 <li th:each="action : ${actions}">
                     <a th:href="@{'/' + ${action.key}}" th:text="${action.value}"></a>
                 </li>
-<!--                <li><a th:href="@{/search}">Search</a></li>-->
-<!--                <li><a th:href="@{/list}">List</a></li>-->
             </ul>
         </div>
     </div>
@@ -44,10 +42,10 @@
             <td><a th:href="@{/list/jobs(column=employer,value=${job.employer})}">Employer</a></td>
             <td th:text="${job.employer}"></td>
         </tr>
-<!--        <tr>-->
-<!--            <td>Employer</td>-->
-<!--            <td><a th:href="@{/list/jobs(column=employer,value=${job.employer})}" th:text="${job.employer}"></a></td>-->
-<!--        </tr>-->
+        <!--        <tr>-->
+        <!--            <td>Employer</td>-->
+        <!--            <td><a th:href="@{/list/jobs(column=employer,value=${job.employer})}" th:text="${job.employer}"></a></td>-->
+        <!--        </tr>-->
         <tr>
             <td><a th:href="@{/list/jobs(column=location,value=${job.location})}">Location</a></td>
             <td th:text="${job.location}"></td>
